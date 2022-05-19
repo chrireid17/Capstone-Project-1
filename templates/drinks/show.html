@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title%}Search{% endblock %}
+
+
+{% block content %}
+<h1 class="text-center mb-3">{{drink.name}}</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container ">
+                <img src="{{drink.img_url}}" class="img-fluid rounded-circle" alt="image of drink">
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <h3>Instructions</h3>
+            <p>{{drink.instructions}}</p>
+
+            <h3>Ingredients</h3>
+            <ul>
+                {% for i in drink.ingredients %}
+                <li>
+                    {{i}}
+                </li>
+                {% endfor %}
+            </ul>
+            <h3>Measurements</h3>
+            <ul>
+                {% for m in drink.measurements %}
+                <li>
+                    {{m}}
+                </li>
+                {% endfor %}
+            </ul>
+            {% if drink not in g.user.favorites%}
+            <form action="/users/{{drink.id}}/favorites" method="POST">
+                <button class="btn btn-secondary">Add to Favorites</button>
+            </form>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

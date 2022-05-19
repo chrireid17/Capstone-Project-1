@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title%}Search{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+
+        {% for drink in drinks.items %}
+        <div class="col-md-4">
+            <div class="card mb-3" style="width: 18rem;">
+                <img src="{{drink.img_url}}" class="card-img-top" alt="image of drink">
+                <div class="card-body">
+                    <h5 class="card-title">{{drink.name}}</h5>
+                    <a href="/drinks/{{drink.id}}" class="btn btn-outline-secondary">Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% if drinks.has_next %}
+        <span class="pb-3">{% if drinks.has_prev%} <a href="/search/{{drinks.prev_num}}">Pevious</a>{% endif %} | {% if
+            drinks.has_next%} <a href="/search/{{drinks.next_num}}">Next</a>{% endif %}</span>
+
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

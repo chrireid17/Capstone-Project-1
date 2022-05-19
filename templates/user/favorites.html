@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title%}Favorites{% endblock %}
+
+
+{% block content %}
+<h1 class="text-center mb-3">Favorites</h1>
+<div class="container">
+    <div class="row">
+        {% for fav in favs%}
+        <div class="col-md-4">
+            <div class="card mb-3" style="width: 18rem;">
+                <img src="{{fav.img_url}}" class="card-img-top" alt="image of drink">
+                <div class="card-body">
+                    <h5 class="card-title">{{fav.name}}</h5>
+                    <a href="/drinks/{{fav.id}}" class="btn btn-outline-secondary">Details</a>
+                    <a href="/drinks/{{fav.id}}/delete" class="btn btn-outline-danger">Remove</a>
+                </div>
+            </div>
+        </div>
+        {% endfor%}
+    </div>
+</div>
+
+{% endblock %}
