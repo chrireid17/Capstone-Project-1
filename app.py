@@ -6,9 +6,11 @@ from models import Favorite, db, connect_db, User, Drink
 import requests
 from forms import SignupForm, LoginForm
 from sqlalchemy.exc import IntegrityError
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///cap1'
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    os.environ.get('DATABASE_URL', 'postgresql:///cap1'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'i will not tell you the secret key'
