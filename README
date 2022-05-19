@@ -1,1 +1,3 @@
 API: https://www.thecocktaildb.com/api.php
+
+Be sure to run seed file before running app.py.
