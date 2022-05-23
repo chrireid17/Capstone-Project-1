@@ -1,4 +1,3 @@
-from charset_normalizer import api
 from app import db
 import requests
 from models import Drink
