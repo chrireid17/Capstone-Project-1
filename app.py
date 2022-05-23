@@ -122,6 +122,9 @@ def handle_search(page=1):
         session['term'] = term
         drinks = search(term).paginate(page, per_page, error_out=False)
 
+        if len(drinks.items) == 0:
+            return render_template('no-drinks.html')
+
         return render_template('search.html', drinks=drinks)
 
     except KeyError:
