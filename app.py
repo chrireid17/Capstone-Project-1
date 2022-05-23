@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
     os.environ.get('DATABASE_URL', 'postgresql:///cap1'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
-app.config['SECRET_KEY'] = 'i will not tell you the secret key'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'IWILLNOTTELLYOUMYSECRET')
 
 CURR_USER_KEY = 'curr_user'
 
